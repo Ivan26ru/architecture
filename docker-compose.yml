@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+
+  # Backend контейнер для php
+  php:
+    build: './docker/php'
+    volumes:
+      - './app:/var/www/app'
+      - './docker/php/zzz-xdebug.ini:/usr/local/etc/php/conf.d/zzz-xdebug.ini'
+    ports: [ '8000:8000' ]
+#    user: '1001'
+    environment:
+      # discover_client_host при подключении к среде разрабтки, первый код будет тот, с которого пришел запрос
+      # client_host дебаг будет подключаться по этому адресу; unix:172.17.0.1, mac, windows: host.docker.internal
+      # ?log_level если среда разработки не принимает запросы, консоль не будет ошибок, что не может подключиться
+      XDEBUG_CONFIG: 'discover_client_host=true client_host=host.docker.internal log_level=0'
+    command: 'php -S 0.0.0.0:8000 -t /var/www/app/public /var/www/app/public/index.php'
