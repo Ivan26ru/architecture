@@ -22,9 +22,9 @@ class DiscriminantTest extends TestCase
     public function dataDiscriminantCount(): array
     {
         return [
-            'D < 0' => [4, 1, 1, 0],
-            'D = 0' => [1, 2, 1, 1],
-            'D > 0' => [1, 3, 1, 2],
+            'D < 0' => [4+(0.1**13), 1, 1, 0],
+            'D = 0' => [1, 2+(0.1**13), 1, 1],
+            'D > 0' => [1, 3, 1+(0.1**13), 2],
         ];
     }
 

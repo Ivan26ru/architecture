@@ -7,7 +7,7 @@ class Discriminant
     private $a;
     private $b;
     private $c;
-    private $epsilon = 0.1 ** 16;
+    private $epsilon = 0.1 ** 12;
 
     public function __construct(
         float $a,
