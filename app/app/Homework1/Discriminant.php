@@ -17,6 +17,10 @@ class Discriminant
         $this->a = $a;
         $this->b = $b;
         $this->c = $c;
+
+        if ($this->a == 0) {
+            throw new \Exception('A не может быть 0');
+        }
     }
 
     /**
@@ -40,8 +44,8 @@ class Discriminant
     private function getDiscriminant(): float
     {
         $maxManyMore = 10 ** 6;
-        if ($this->a <> 0 && $this->b / $this->a > $maxManyMore) {
-            throw new \Exception('D много больше A');
+        if ($this->b / $this->a > $maxManyMore) {
+            throw new \Exception('B много больше A');
         }
 
         $d = $this->b * $this->b - 4 * $this->a * $this->c;
