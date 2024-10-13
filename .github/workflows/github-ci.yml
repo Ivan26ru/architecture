@@ -33,7 +33,7 @@ jobs:
           - "xdebug3"
 
     steps:
-      - name: Configure Git to avoid issues with line endings
+#      - name: Configure Git to avoid issues with line endings
 
       - name: Checkout
         uses: actions/checkout@v4
