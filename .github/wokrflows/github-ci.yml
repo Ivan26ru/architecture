@@ -38,6 +38,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: cd home dir
+        run: cd app/
+
       - name: Install PHP with extensions
         uses: shivammathur/setup-php@v2
         with:
