@@ -41,7 +41,7 @@ jobs:
           tools: none
 
       - name: Install dependencies with Composer
-        run: php ./tools/composer update --no-ansi --no-interaction --no-progress
+        run: php ./composer update --no-ansi --no-interaction --no-progress
 
       - name: Run tests with PHPUnit
         run: vendor/bin/phpunit --log-junit junit.xml --coverage-clover=coverage.xml
