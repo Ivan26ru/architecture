@@ -13,7 +13,7 @@ jobs:
   tests:
     name: Tests
 
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     env:
       PHP_EXTENSIONS: none, ctype, dom, json, libxml, mbstring, openssl, pdo_sqlite, soap, tokenizer, xml, xmlwriter
@@ -21,16 +21,6 @@ jobs:
 
     strategy:
       fail-fast: false
-      matrix:
-        os:
-          - ubuntu-latest
-
-        php-version:
-          - "8.2"
-
-        coverage-driver:
-          - "pcov"
-          - "xdebug3"
 
     steps:
 #      - name: Configure Git to avoid issues with line endings
@@ -44,8 +34,8 @@ jobs:
       - name: Install PHP with extensions
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php-version }}
-          coverage: ${{ matrix.coverage-driver }}
+          php-version: 8.2
+          coverage: xdebug3
           extensions: ${{ env.PHP_EXTENSIONS }}
           ini-values: ${{ env.PHP_INI_VALUES }}
           tools: none
