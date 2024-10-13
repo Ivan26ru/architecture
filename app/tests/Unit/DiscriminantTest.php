@@ -68,5 +68,4 @@ class DiscriminantTest extends TestCase
             'два корня' =>[1,3,1,[-0.3819660112501051,-2.618033988749895]]
         ];
     }
-
 }
