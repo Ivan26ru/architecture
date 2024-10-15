@@ -25,4 +25,5 @@ jobs:
           version: 10.5
           bootstrap: app/vendor/autoload.php
           configuration: app/phpunit.xml
-#          args: --coverage-text
+          args: --coverage-text
+        run: app/vendor/bin/phpunit tests/
