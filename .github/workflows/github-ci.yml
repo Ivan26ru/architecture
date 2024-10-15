@@ -24,5 +24,5 @@ jobs:
         with:
           version: 9.6
           bootstrap: app/vendor/autoload.php
-          configuration: app/test/phpunit.xml
+          configuration: app/phpunit.xml
           args: --coverage-text
