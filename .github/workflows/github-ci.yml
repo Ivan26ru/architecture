@@ -4,55 +4,19 @@ on:
   - pull_request
   - push
 
-name: CI
-
-env:
-  COMPOSER_ROOT_VERSION: "11.0.x-dev"
-
 jobs:
-  tests:
-    name: Tests
-
+  build-test:
     runs-on: ubuntu-latest
 
-    env:
-      PHP_EXTENSIONS: none, ctype, dom, json, libxml, mbstring, openssl, pdo_sqlite, soap, tokenizer, xml, xmlwriter
-      PHP_INI_VALUES: memory_limit=-1, assert.exception=1, zend.assertions=1, error_reporting=-1, log_errors_max_len=0, display_errors=On
-
-    strategy:
-      fail-fast: false
-
     steps:
-#      - name: Configure Git to avoid issues with line endings
+      - uses: actions/checkout@v3
 
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: php-actions/composer@v6
 
-      - name: cd home dir
-        run: cd app/
-
-      - name: Install PHP with extensions
-        uses: shivammathur/setup-php@v2
+      - name: PHPUnit Tests
+        uses: php-actions/phpunit@master
         with:
-          php-version: 8.2
-          coverage: xdebug3
-          extensions: ${{ env.PHP_EXTENSIONS }}
-          ini-values: ${{ env.PHP_INI_VALUES }}
-          tools: none
-
-      - name: Install dependencies with Composer
-        run: php ./app/composer update --no-ansi --no-interaction --no-progress
-
-      - name: Run tests with PHPUnit
-        run: vendor/bin/phpunit --log-junit junit.xml --coverage-clover=coverage.xml
-
-      - name: Upload test results to Codecov.io
-        if: ${{ !cancelled() }}
-        uses: codecov/test-results-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-
-      - name: Upload code coverage data to Codecov.io
-        uses: codecov/codecov-action@v4
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+          version: 9.6
+          bootstrap: vendor/autoload.php
+          configuration: test/phpunit.xml
+          args: --coverage-text
