@@ -23,5 +23,4 @@ jobs:
         run:
 
       - name: PHPUnit Tests My
-        run: cd app && vendor/bin/phpunit tests/
-
+        run: app/vendor/bin/phpunit --configuration app/phpunit.xml app/tests/
