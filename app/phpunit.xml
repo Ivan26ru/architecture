@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit
         cacheResultFile="/var/www/app/tests/.phpunit.result.cache"
-        cacheResult="true"
+        cacheResult="false"
     >
 </phpunit>
