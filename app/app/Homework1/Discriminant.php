@@ -24,6 +24,7 @@ class Discriminant
     }
 
     /**
+     * Расчет дискриминанта
      * @throws \Exception
      */
     public function calculate(): array
