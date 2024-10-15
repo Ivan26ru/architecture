@@ -20,8 +20,8 @@ jobs:
           working_dir: "app"
 
       - name: cd to work directory
-        run: cd app/
+        run:
 
       - name: PHPUnit Tests My
-        run: vendor/bin/phpunit tests/
+        run: cd app && vendor/bin/phpunit tests/
 
