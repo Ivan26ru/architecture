@@ -19,6 +19,9 @@ jobs:
           args: "--ignore-platform-reqs --optimize-autoloader"
           working_dir: "app"
 
+      - name: cd to work directory
+        run: cd app/
+
       - name: PHPUnit Tests My
-        run: app/vendor/bin/phpunit app/tests/
+        run: vendor/bin/phpunit tests/
 
