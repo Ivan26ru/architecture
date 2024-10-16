@@ -9,6 +9,9 @@ class Discriminant
     private $c;
     private $epsilon = 0.1 ** 12;
 
+    /**
+     * @throws \Exception
+     */
     public function __construct(
         float $a,
         float $b,
