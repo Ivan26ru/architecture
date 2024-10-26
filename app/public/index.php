@@ -1,13 +1,27 @@
 <?php
-use App\Homework1\Discriminant;
+
+use App\hw2\commands\MoveCommand;
+use App\hw2\commands\MovingObjectAdapter;
+use App\hw2\UObject;
 
 require_once "../vendor/autoload.php";
 
-$a = 10000000;
-$b = 0.1**10000000000;
-$c = sqrt(-1);
+try {
 
-$desc = new Discriminant($a, $b, $c);
-$result = $desc->calculate();
-echo "<pre>";
-var_dump($result);
+
+$object = new UObject();
+
+$movingObj = new MovingObjectAdapter($object);
+
+$object2 = (new MoveCommand())->move($movingObj)->Execute();
+
+dd($object, $movingObj, $object2);
+
+//$vectorThis = new Vector([0, 0]);
+//
+//dd(Vector::add($vectorThis, new Vector([2, 3])));
+} catch (Throwable $e) {
+    dd($e);
+    echo $e->getMessage();
+    die();
+}
