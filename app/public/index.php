@@ -2,26 +2,29 @@
 
 use App\hw2\commands\MoveCommand;
 use App\hw2\commands\MovingObjectAdapter;
+use App\hw2\commands\Vector;
 use App\hw2\UObject;
 
 require_once "../vendor/autoload.php";
 
 try {
+    $object = new UObject();
 
+    dump($object);
 
-$object = new UObject();
+    $movingObj = new MovingObjectAdapter($object);
+    dump($object);
 
-$movingObj = new MovingObjectAdapter($object);
+    $object->setMapping('Velocity', new Vector(3, 4));
 
-$object2 = (new MoveCommand())->move($movingObj)->Execute();
+    $movingCommand = new MoveCommand($movingObj);
+    $movingCommand->execute();
+    dump($object);
 
-dd($object, $movingObj, $object2);
+    $movingCommand->execute();
 
-//$vectorThis = new Vector([0, 0]);
-//
-//dd(Vector::add($vectorThis, new Vector([2, 3])));
+    dump($object);
+
 } catch (Throwable $e) {
     dd($e);
-    echo $e->getMessage();
-    die();
 }

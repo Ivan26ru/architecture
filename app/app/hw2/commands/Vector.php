@@ -4,20 +4,16 @@ namespace App\hw2\commands;
 
 class Vector
 {
-    private array $coordinates;
+    public function __construct(
+        public float $x,
+        public float $y,
+    ) {}
 
-    public function __construct($coordinateX)
+    public static function add(Vector $vectorCurrent, Vector $vectorVelocity): Vector
     {
-        $this->coordinates = $coordinateX;
-    }
-
-    public static function add(Vector $vectorCurrent, Vector $vectorVelocity)
-    {
-        $resultCoords = array_map(function ($x1, $x2) {
-            return $x1 + $x2;
-        }, $vectorCurrent->coordinates, $vectorVelocity->coordinates);
-
-        return new Vector($resultCoords);
+        $x = $vectorCurrent->x + $vectorVelocity->x;
+        $y = $vectorCurrent->y + $vectorVelocity->y;
+        return new Vector($x, $y);
     }
 }
 

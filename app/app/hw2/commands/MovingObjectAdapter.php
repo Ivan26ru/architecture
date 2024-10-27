@@ -15,6 +15,11 @@ class MovingObjectAdapter implements MovingObjectInterface
     public function __construct(UObject $object)
     {
         $this->object = $object;
+
+        $this->object->setMapping(
+            self::$NAME_LOCATION,
+            new Vector(0, 0)
+        );
     }
 
     public function setLocation(Vector $newValue): void
@@ -32,9 +37,9 @@ class MovingObjectAdapter implements MovingObjectInterface
         $angle    = $this->object->getMapping(self::$NAME_ANGLE);
         $velocity = $this->object->getMapping(self::$NAME_VELOCITY);
 
-        return new Vector([
-            $velocity * cos($angle ** 2),
-            $velocity * sin($angle ** 2)
-        ]);
+        return new Vector(
+            $velocity->x * cos($angle ** 2),
+            $velocity->y * sin($angle ** 2)
+        );
     }
 }

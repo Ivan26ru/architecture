@@ -9,13 +9,7 @@ class UObject
     public function __construct()
     {
         $this->setMapping(
-            'Location', [0, 0]
-        );
-        $this->setMapping(
             'Angle', 0
-        );
-        $this->setMapping(
-            'Velocity', [2, 3]
         );
     }
 
