@@ -1,29 +1,19 @@
 <?php
 
+use App\hw2\Adapter\MovingObjectAdapter;
 use App\hw2\commands\MoveCommand;
-use App\hw2\commands\MovingObjectAdapter;
 use App\hw2\commands\Vector;
 use App\hw2\UObject;
 
 require_once "../vendor/autoload.php";
 
 try {
-    $object = new UObject();
+    $ship = new UObject();
 
-    dump($object);
+    $location1 = new Vector(12, 5);
+    $speed     = new Vector(-7, 3);
 
-    $movingObj = new MovingObjectAdapter($object);
-    dump($object);
-
-    $object->setMapping('Velocity', new Vector(3, 4));
-
-    $movingCommand = new MoveCommand($movingObj);
-    $movingCommand->execute();
-    dump($object);
-
-    $movingCommand->execute();
-
-    dump($object);
+    dump(Vector::add($location1, $speed));
 
 } catch (Throwable $e) {
     dd($e);

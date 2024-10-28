@@ -3,19 +3,19 @@
 namespace App\hw2\commands;
 
 
+use App\hw2\Adapter\Interfaces\MovingObjectAdapterInterface;
 use App\hw2\commands\Interfaces\CommandInterface;
-use App\hw2\commands\Interfaces\MovingObjectInterface;
 
 readonly class MoveCommand implements CommandInterface
 {
-    public function __construct(private MovingObjectInterface $object) {}
+    public function __construct(private MovingObjectAdapterInterface $movingObject) {}
 
-    public function Execute(): void
+    public function execute(): void
     {
-        $this->object->setLocation(
+        $this->movingObject->setLocation(
             Vector::add(
-                $this->object->getLocation(),
-                $this->object->getVelocity()
+                $this->movingObject->getLocation(),
+                $this->movingObject->getVelocity()
             )
         );
     }

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\hw2\commands;
+namespace App\hw2\Adapter;
 
-use App\hw2\commands\Interfaces\MovingObjectInterface;
+use App\hw2\Adapter\Interfaces\MovingObjectAdapterInterface;
+use App\hw2\commands\Vector;
 use App\hw2\UObject;
 
-class MovingObjectAdapter implements MovingObjectInterface
+class MovingObjectAdapter implements MovingObjectAdapterInterface
 {
     static string  $NAME_LOCATION = 'Location';//Текущая позиция
     static string  $NAME_ANGLE    = 'Angle';//Угол
@@ -38,8 +39,8 @@ class MovingObjectAdapter implements MovingObjectInterface
         $velocity = $this->object->getMapping(self::$NAME_VELOCITY);
 
         return new Vector(
-            $velocity->x * cos($angle ** 2),
-            $velocity->y * sin($angle ** 2)
+            x: $velocity->x * cos($angle ** 2),
+            y: $velocity->y * sin($angle ** 2)
         );
     }
 }

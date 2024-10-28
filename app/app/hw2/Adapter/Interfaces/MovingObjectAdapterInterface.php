@@ -1,11 +1,11 @@
 <?php
 
-namespace App\hw2\commands\Interfaces;
+namespace App\hw2\Adapter\Interfaces;
 
 use App\hw2\commands\Vector;
 use App\hw2\UObject;
 
-interface MovingObjectInterface
+interface MovingObjectAdapterInterface
 {
     public function __construct(UObject $object);
 
