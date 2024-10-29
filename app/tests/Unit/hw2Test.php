@@ -1,14 +1,13 @@
 <?php
 
-use App\HomeworkTwo\Vector;
 use App\hw2\Adapter\MovingObjectAdapter;
 use App\hw2\commands\MoveCommand;
+use App\hw2\commands\Vector;
 use App\hw2\UObject;
 use PHPUnit\Framework\TestCase;
 
 class hw2Test extends TestCase
 {
-
 
     /**
      * Для объекта, находящегося в точке (12, 5) и движущегося со скоростью (-7, 3) движение меняет положение объекта на (5, 8)

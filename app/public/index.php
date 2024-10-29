@@ -8,13 +8,15 @@ use App\hw2\UObject;
 require_once "../vendor/autoload.php";
 
 try {
-    $ship = new UObject();
+    $starShip  = new UObject();
+    $movingObj = new MovingObjectAdapter($starShip);
 
-    $location1 = new Vector(12, 5);
-    $speed     = new Vector(-7, 3);
+    $starShip->setMapping('Location', new Vector(12, 5));
+    $starShip->setMapping('Velocity', new Vector(-7, 10));
 
-    dump(Vector::add($location1, $speed));
-
+    $movingCommand = new MoveCommand($movingObj);
+    $movingCommand->execute();
+    dump($starShip);
 } catch (Throwable $e) {
     dd($e);
 }

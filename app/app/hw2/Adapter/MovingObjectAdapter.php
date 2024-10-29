@@ -39,8 +39,8 @@ class MovingObjectAdapter implements MovingObjectAdapterInterface
         $velocity = $this->object->getMapping(self::$NAME_VELOCITY);
 
         return new Vector(
-            x: $velocity->x * cos($angle ** 2),
-            y: $velocity->y * sin($angle ** 2)
+            x: $velocity->x,
+            y: $velocity->y
         );
     }
 }
