@@ -8,7 +8,7 @@ use App\hw2\Commands\Vector;
 use App\hw2\UObject;
 use PHPUnit\Framework\TestCase;
 
-class hw2Test extends TestCase
+class Hw2Test extends TestCase
 {
 
     /**
