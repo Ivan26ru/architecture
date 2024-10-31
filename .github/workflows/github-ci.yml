@@ -18,6 +18,7 @@ jobs:
         with:
           args: "--ignore-platform-reqs --optimize-autoloader"
           working_dir: "app"
+          php_version: "8.3"
 
       - name: PHPUnit Tests My
         run: app/vendor/bin/phpunit --configuration=app/phpunit.xml app/tests/
