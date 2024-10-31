@@ -5,7 +5,7 @@ namespace App\hw2\Commands;
 use App\hw2\Adapter\Interfaces\MovingObjectAdapterInterface;
 use App\hw2\Commands\Interfaces\CommandInterface;
 
-readonly class MoveCommand implements CommandInterface
+class MoveCommand implements CommandInterface
 {
     public function __construct(private MovingObjectAdapterInterface $movingObject) {}
 
