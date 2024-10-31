@@ -1,7 +1,9 @@
 <?php
 
 use App\hw2\Adapter\MovingObjectAdapter;
+use App\hw2\Adapter\RotatableAdapter;
 use App\hw2\Commands\MoveCommand;
+use App\hw2\Commands\RotateCommand;
 use App\hw2\Commands\Vector;
 use App\hw2\UObject;
 use PHPUnit\Framework\TestCase;
@@ -18,8 +20,8 @@ class hw2Test extends TestCase
         $starShip  = new UObject();
         $movingObj = new MovingObjectAdapter($starShip);
 
-        $starShip->setMapping('Location', new Vector(12, 5));
-        $starShip->setMapping('Velocity', new Vector(-7, 3));
+        $movingObj->setLocation(new Vector(12, 5));
+        $movingObj->setVelocity(new Vector(-7, 3));
 
         $movingCommand = new MoveCommand($movingObj);
         $movingCommand->execute();
@@ -59,14 +61,15 @@ class hw2Test extends TestCase
         $starShip  = new UObject();
         $movingObj = new MovingObjectAdapter($starShip);
 
-//        $starShip->setMapping('Location', null);
-//        $starShip->setMapping('Velocity', new Vector(-7, 3));
+        //        $starShip->setMapping('Location', null);
+        //        $starShip->setMapping('Velocity', new Vector(-7, 3));
 
         $movingCommand = new MoveCommand($movingObj);
         $this->expectException(Throwable::class);
 
         $movingCommand->execute();
     }
+
     /**
      * Попытка сдвинуть объект, у которого невозможно прочитать значение мгновенной скорости, приводит к ошибке
      * @return void
@@ -82,5 +85,23 @@ class hw2Test extends TestCase
         $this->expectException(Throwable::class);
 
         $movingCommand->execute();
+    }
+
+    /**
+     * Поворот реализован в виде отдельного класса
+     * @return void
+     */
+    public function test_hw2_5_rotate()
+    {
+        $starShip  = new UObject();
+        $rotateObj = new RotatableAdapter($starShip);
+        $rotateObj->setDirection(90);
+
+        $rotateCommand = new RotateCommand($rotateObj);
+        $rotateCommand->execute();
+
+        $this->assertEquals(
+            90.0,
+            $starShip->getMapping('Direction'));
     }
 }
