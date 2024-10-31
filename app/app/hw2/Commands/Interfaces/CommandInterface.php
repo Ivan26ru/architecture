@@ -1,6 +1,6 @@
 <?php
 
-namespace App\hw2\commands\Interfaces;
+namespace App\hw2\Commands\Interfaces;
 
 interface CommandInterface
 {

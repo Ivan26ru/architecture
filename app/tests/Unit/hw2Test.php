@@ -1,8 +1,8 @@
 <?php
 
 use App\hw2\Adapter\MovingObjectAdapter;
-use App\hw2\commands\MoveCommand;
-use App\hw2\commands\Vector;
+use App\hw2\Commands\MoveCommand;
+use App\hw2\Commands\Vector;
 use App\hw2\UObject;
 use PHPUnit\Framework\TestCase;
 

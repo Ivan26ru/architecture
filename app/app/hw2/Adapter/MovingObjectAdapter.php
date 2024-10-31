@@ -3,7 +3,7 @@
 namespace App\hw2\Adapter;
 
 use App\hw2\Adapter\Interfaces\MovingObjectAdapterInterface;
-use App\hw2\commands\Vector;
+use App\hw2\Commands\Vector;
 use App\hw2\UObject;
 
 class MovingObjectAdapter implements MovingObjectAdapterInterface
@@ -26,6 +26,11 @@ class MovingObjectAdapter implements MovingObjectAdapterInterface
     public function setLocation(Vector $newValue): void
     {
         $this->object->setMapping(self::$NAME_LOCATION, $newValue);
+    }
+
+    public function setVelocity(Vector $newValue): void
+    {
+        $this->object->setMapping(self::$NAME_VELOCITY, $newValue);
     }
 
     public function getLocation(): Vector

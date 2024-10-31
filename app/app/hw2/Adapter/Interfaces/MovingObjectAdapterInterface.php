@@ -2,7 +2,7 @@
 
 namespace App\hw2\Adapter\Interfaces;
 
-use App\hw2\commands\Vector;
+use App\hw2\Commands\Vector;
 use App\hw2\UObject;
 
 interface MovingObjectAdapterInterface
