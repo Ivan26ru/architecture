@@ -52,10 +52,6 @@ class MovingObjectAdapter implements MovingObjectAdapterInterface
         $angle    = $this->object->getMapping(self::$NAME_ANGLE);
         $velocity = $this->object->getMapping(self::$NAME_VELOCITY);
 
-        if (true) {
-            throw new MoveIncorrectVelocityException('Невозможно сдвинуть объект, неккоретная мгновенная скорость.');
-        }
-
         return new Vector(
             x: $velocity->x,
             y: $velocity->y
