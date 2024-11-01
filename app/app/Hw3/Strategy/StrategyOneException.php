@@ -16,7 +16,9 @@ final class StrategyOneException implements StrategyExceptionInterface
 {
     public function run(Throwable $exception, CommandDto $commandDto): void
     {
-        $command = $commandDto->countOfAttempts === 1 ? new RepeatAgainCommand($commandDto) : new LogCommand($exception, $commandDto);
+        $command = $commandDto->countOfAttempts === 1
+            ? new RepeatAgainCommand($commandDto)
+            : new LogCommand($exception, $commandDto);
         $command->execute();
     }
 }

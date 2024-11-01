@@ -13,7 +13,6 @@ use App\Hw3\Strategy\StrategyOneException;
 
 require_once "../vendor/autoload.php";
 
-//try {
 $starShip  = new UObject();
 $movingObj = new MovingObjectAdapter($starShip);
 $movingObj->setLocation(new Vector(12, 5));
@@ -31,7 +30,7 @@ $queueCommand->execute();
 
 $commandRepeat = RepeatAgainCommand::getRepeatedCommands();
 
-dump($commandRepeat, $starShip);
-//} catch (Throwable $e) {
-//    dd($e);
-//}
+dump($commandRepeat);
+dump($starShip);
+
+dump(\App\Hw3\Command\LogCommand::getLogs());

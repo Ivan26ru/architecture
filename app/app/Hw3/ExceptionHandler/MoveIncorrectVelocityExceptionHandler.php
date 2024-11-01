@@ -15,6 +15,6 @@ final class MoveIncorrectVelocityExceptionHandler implements ExceptionHandlerInt
 
     public function execute(): void
     {
-        echo 'Некорректная мгновенная скорость , команда ' . $this->command::class . ' выполнилась с ошибкой: ' . $this->exception->getMessage();
+        echo '<br>Некорректная мгновенная скорость , команда ' . $this->command::class . ' выполнилась с ошибкой: ' . $this->exception->getMessage();
     }
 }

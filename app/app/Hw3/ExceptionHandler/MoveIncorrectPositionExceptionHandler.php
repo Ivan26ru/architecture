@@ -16,6 +16,6 @@ final class MoveIncorrectPositionExceptionHandler implements ExceptionHandlerInt
 
     public function execute(): void
     {
-        echo 'Некорректная позиция ' . $this->command::class . ' выполнилась с ошибкой: ' . $this->exception->getMessage();
+        echo '<br>Некорректная позиция ' . $this->command::class . ' выполнилась с ошибкой: ' . $this->exception->getMessage();
     }
 }

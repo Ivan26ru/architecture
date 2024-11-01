@@ -35,10 +35,15 @@ final class ExceptionHandlerDictionary
         return new $handlerClass($exception, $command);
     }
 
+    /**
+     * Маппинг исключений к обработчикам
+     * @return array
+     */
     private static function getStructureHandler(): array
     {
         $structureHandler = [];
 
+        //Вручную сопоставление идет, не зависимо от названия файла
         $structureHandler[MoveIncorrectPositionException::class][MoveCommand::class] = MoveIncorrectPositionExceptionHandler::class;
         $structureHandler[MoveIncorrectVelocityException::class][MoveCommand::class] = MoveIncorrectVelocityExceptionHandler::class;
 
