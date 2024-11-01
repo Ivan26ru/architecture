@@ -1,6 +1,6 @@
 <?php
 
-namespace App\hw2;
+namespace App\Hw2;
 
 class UObject
 {

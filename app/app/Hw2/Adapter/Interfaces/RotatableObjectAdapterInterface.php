@@ -1,9 +1,9 @@
 <?php
 
-namespace App\hw2\Adapter\Interfaces;
+namespace App\Hw2\Adapter\Interfaces;
 
-use App\hw2\Commands\Vector;
-use App\hw2\UObject;
+use App\Hw2\Commands\Vector;
+use App\Hw2\UObject;
 
 interface RotatableObjectAdapterInterface
 {

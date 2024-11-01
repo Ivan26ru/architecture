@@ -1,9 +1,9 @@
 <?php
 
-namespace App\hw2\Commands;
+namespace App\Hw2\Commands;
 
-use App\hw2\Adapter\RotatableAdapter;
-use App\hw2\Commands\Interfaces\CommandInterface;
+use App\Hw2\Adapter\RotatableAdapter;
+use App\Hw2\Commands\Interfaces\CommandInterface;
 
 /**
  * Команда для поворота вокруг оси.

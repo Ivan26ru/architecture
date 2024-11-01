@@ -1,11 +1,11 @@
 <?php
 
-use App\hw2\Adapter\MovingObjectAdapter;
-use App\hw2\Adapter\RotatableAdapter;
-use App\hw2\Commands\MoveCommand;
-use App\hw2\Commands\RotateCommand;
-use App\hw2\Commands\Vector;
-use App\hw2\UObject;
+use App\Hw2\Adapter\MovingObjectAdapter;
+use App\Hw2\Adapter\RotatableAdapter;
+use App\Hw2\Commands\MoveCommand;
+use App\Hw2\Commands\RotateCommand;
+use App\Hw2\Commands\Vector;
+use App\Hw2\UObject;
 use PHPUnit\Framework\TestCase;
 
 class Hw2Test extends TestCase

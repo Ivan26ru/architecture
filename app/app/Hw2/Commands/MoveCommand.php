@@ -1,9 +1,9 @@
 <?php
 
-namespace App\hw2\Commands;
+namespace App\Hw2\Commands;
 
-use App\hw2\Adapter\Interfaces\MovingObjectAdapterInterface;
-use App\hw2\Commands\Interfaces\CommandInterface;
+use App\Hw2\Adapter\Interfaces\MovingObjectAdapterInterface;
+use App\Hw2\Commands\Interfaces\CommandInterface;
 
 class MoveCommand implements CommandInterface
 {

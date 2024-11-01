@@ -1,34 +1,37 @@
 <?php
 
-use App\hw2\Adapter\MovingObjectAdapter;
-use App\hw2\Adapter\RotatableAdapter;
-use App\hw2\Commands\MoveCommand;
-use App\hw2\Commands\RotateCommand;
-use App\hw2\Commands\Vector;
-use App\hw2\UObject;
+use App\Hw2\Adapter\MovingObjectAdapter;
+use App\Hw2\Adapter\RotatableAdapter;
+use App\Hw2\Commands\MoveCommand;
+use App\Hw2\Commands\RotateCommand;
+use App\Hw2\Commands\Vector;
+use App\Hw2\UObject;
+use App\Hw3\Command\QueueCommand;
+use App\Hw3\Command\RepeatAgainCommand;
+use App\Hw3\Dto\CommandDto;
+use App\Hw3\Strategy\StrategyOneException;
 
 require_once "../vendor/autoload.php";
 
-try {
-    $starShip  = new UObject();
-    $movingObj = new MovingObjectAdapter($starShip);
+//try {
+$starShip  = new UObject();
+$movingObj = new MovingObjectAdapter($starShip);
+$movingObj->setLocation(new Vector(12, 5));
+$movingObj->setVelocity(new Vector(-7, 3));
 
-//    $movingObj->setLocation(new Vector(12, 5));
-//    $movingObj->setVelocity(new Vector(-7, -10));
+$movingCommand = new MoveCommand($movingObj);
 
-//    $movingCommand = new MoveCommand($movingObj);
-//    $movingCommand->execute();
+$commandDto = new CommandDto($movingCommand);
 
-    $rotateObj = new RotatableAdapter($starShip);
-    $rotateObj->setDirection(360);
+QueueCommand::addCommand($commandDto);
 
+$strategyOneException = new StrategyOneException();
+$queueCommand         = new QueueCommand($strategyOneException);
+$queueCommand->execute();
 
-    $rotateCommand = new RotateCommand($rotateObj);
-    $rotateCommand->execute();
+$commandRepeat = RepeatAgainCommand::getRepeatedCommands();
 
-
-    dump($rotateObj->getDirection());
-    dump($starShip);
-} catch (Throwable $e) {
-    dd($e);
-}
+dump($commandRepeat, $starShip);
+//} catch (Throwable $e) {
+//    dd($e);
+//}
