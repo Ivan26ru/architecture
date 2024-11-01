@@ -1,6 +1,6 @@
 <?php
 
-namespace App\hw2\Commands;
+namespace App\Hw2\Commands;
 
 class Vector
 {

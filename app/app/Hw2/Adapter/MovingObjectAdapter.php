@@ -1,10 +1,13 @@
 <?php
 
-namespace App\hw2\Adapter;
+namespace App\Hw2\Adapter;
 
-use App\hw2\Adapter\Interfaces\MovingObjectAdapterInterface;
-use App\hw2\Commands\Vector;
-use App\hw2\UObject;
+use App\Hw2\Adapter\Interfaces\MovingObjectAdapterInterface;
+use App\Hw2\Commands\Vector;
+use App\Hw2\UObject;
+use App\Hw3\Exception\MoveIncorrectPositionException;
+use App\Hw3\Exception\MoveIncorrectVelocityException;
+use Exception;
 
 class MovingObjectAdapter implements MovingObjectAdapterInterface
 {
@@ -25,6 +28,12 @@ class MovingObjectAdapter implements MovingObjectAdapterInterface
 
     public function setLocation(Vector $newValue): void
     {
+        if (true === is_nan($newValue->x)) {
+            throw new MoveIncorrectPositionException('Координата x не число');
+        }
+        if (true === is_nan($newValue->y)) {
+            throw new MoveIncorrectPositionException('Координата y не число');
+        }
         $this->object->setMapping(self::$NAME_LOCATION, $newValue);
     }
 
@@ -42,6 +51,10 @@ class MovingObjectAdapter implements MovingObjectAdapterInterface
     {
         $angle    = $this->object->getMapping(self::$NAME_ANGLE);
         $velocity = $this->object->getMapping(self::$NAME_VELOCITY);
+
+        if (true) {
+            throw new MoveIncorrectVelocityException('Невозможно сдвинуть объект, неккоретная мгновенная скорость.');
+        }
 
         return new Vector(
             x: $velocity->x,

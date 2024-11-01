@@ -1,9 +1,9 @@
 <?php
 
-namespace App\hw2\Adapter;
+namespace App\Hw2\Adapter;
 
-use App\hw2\Adapter\Interfaces\RotatableObjectAdapterInterface;
-use App\hw2\UObject;
+use App\Hw2\Adapter\Interfaces\RotatableObjectAdapterInterface;
+use App\Hw2\UObject;
 
 class RotatableAdapter implements RotatableObjectAdapterInterface
 {
