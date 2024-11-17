@@ -25,7 +25,7 @@ final class RepeatAgainCommand implements CommandInterface
             countOfAttempts: $this->commandDto->countOfAttempts + 1
         );
 
-        QueueCommand::addCommand($commandDto);
+        QueueCommand::addCommand(commandDto: $commandDto);
         self::$repeatedCommands[] = $commandDto->command::class;
     }
 

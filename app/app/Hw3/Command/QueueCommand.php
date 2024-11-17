@@ -10,15 +10,25 @@ use App\Hw3\ExceptionHandler\ExceptionHandler;
 use App\Hw3\Strategy\StrategyExceptionInterface;
 use Throwable;
 
+/**
+ * Обработка исключений через очередь команд
+ */
 final class QueueCommand implements CommandInterface
 {
     /** @var CommandDto[] очередь команд */
     public static array $queue = [];
 
-    public function __construct(private readonly StrategyExceptionInterface $concreteStrategyException)
-    {
-    }
+    public function __construct(private readonly StrategyExceptionInterface $concreteStrategyException) {}
 
+    /**
+     * Добавление команд в очередь.
+     *
+     * Сделано статическим - что б можно было добавлять в любом месте и была единая очередь команд
+     *
+     * @param  CommandDto  $commandDto
+     *
+     * @return void
+     */
     public static function addCommand(CommandDto $commandDto): void
     {
         self::$queue[] = $commandDto;
@@ -26,9 +36,9 @@ final class QueueCommand implements CommandInterface
 
     public function execute(): void
     {
-       while ([] !== self::$queue) {
-           $this->executeIteration();
-       }
+        while ([] !== self::$queue) {
+            $this->executeIteration();
+        }
     }
 
     private function executeIteration(): void
