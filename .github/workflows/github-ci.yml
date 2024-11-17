@@ -11,6 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: php version
+        run: php -v
+
       - name: Install dependencies
         uses: "php-actions/composer@v6"
         env:
