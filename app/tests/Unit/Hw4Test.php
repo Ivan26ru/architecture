@@ -37,7 +37,7 @@ class Hw4Test extends TestCase
             $result = get_class($e);
         }
 
-        $this->assertEquals($expected, $result);
+        $this->assertEquals($expected, $result, 'Тест на достаточное количество топлива не пройден');
     }
 
     public static function dataCheckFuel(): array
@@ -61,7 +61,7 @@ class Hw4Test extends TestCase
         $burnFuelAdapter = new BurnFuelAdapter($uObject);
         (new BurnFuelCommand($burnFuelAdapter))->execute();
 
-        $this->assertEquals(expected: 9, actual: $uObject->getMapping('Fuel'));
+        $this->assertEquals(expected: 9, actual: $uObject->getMapping('Fuel'), message: 'Расход топлива не корректный');
     }
 
     /**
@@ -91,7 +91,8 @@ class Hw4Test extends TestCase
             $result = get_class($e);
         }
 
-        $this->assertEquals($expected, $result);
+        $this->assertEquals(expected: $expected, actual: $result,
+            message: 'Макрокоманда (проверка топлива, передвижения, уменьшение топлива) не работает');
     }
 
     public static function dataCheckMoveBurnFuel(): array
