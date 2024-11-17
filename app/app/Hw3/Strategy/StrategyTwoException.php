@@ -12,6 +12,7 @@ use Throwable;
 
 /**
  * Вторая стратегия обработки исключений (ошибок).
+ * Пробует повторить команду 3 раза
  */
 final class StrategyTwoException implements StrategyExceptionInterface
 {
