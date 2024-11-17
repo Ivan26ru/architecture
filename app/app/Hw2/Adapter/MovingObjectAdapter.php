@@ -6,8 +6,6 @@ use App\Hw2\Adapter\Interfaces\MovingObjectAdapterInterface;
 use App\Hw2\Commands\Vector;
 use App\Hw2\UObject;
 use App\Hw3\Exception\MoveIncorrectPositionException;
-use App\Hw3\Exception\MoveIncorrectVelocityException;
-use Exception;
 
 class MovingObjectAdapter implements MovingObjectAdapterInterface
 {
@@ -19,11 +17,6 @@ class MovingObjectAdapter implements MovingObjectAdapterInterface
     public function __construct(UObject $object)
     {
         $this->object = $object;
-
-        $this->object->setMapping(
-            self::$NAME_LOCATION,
-            new Vector(0, 0)
-        );
     }
 
     public function setLocation(Vector $newValue): void
