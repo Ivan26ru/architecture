@@ -3,5 +3,6 @@
         cacheResultFile="/var/www/app/tests/.phpunit.result.cache"
         cacheResult="false"
         colors="true"
+        phpVersion="8.3"
     >
 </phpunit>
