@@ -12,6 +12,7 @@ use App\Hw3\Exception\NotFoundHandlerException;
 use App\Hw3\ExceptionHandler\ExceptionHandlerInterface;
 use App\Hw3\ExceptionHandler\MoveIncorrectPositionExceptionHandler;
 use App\Hw3\ExceptionHandler\MoveIncorrectVelocityExceptionHandler;
+use App\Hw4\Command\MacroCommand;
 use Throwable;
 
 final class ExceptionHandlerDictionary
@@ -45,7 +46,9 @@ final class ExceptionHandlerDictionary
 
         //Вручную сопоставление идет, не зависимо от названия файла
         $structureHandler[MoveIncorrectPositionException::class][MoveCommand::class] = MoveIncorrectPositionExceptionHandler::class;
-        $structureHandler[MoveIncorrectVelocityException::class][MoveCommand::class] = MoveIncorrectVelocityExceptionHandler::class;
+        $structureHandler[MoveIncorrectPositionException::class][PlayStopMacroCommand::class] = MoveIncorrectPositionExceptionHandler::class;
+
+//        $structureHandler[MoveIncorrectPositionException::class][ReturnMacroCommand::class] = MoveIncorrectPositionExceptionHandler::class;
 
         return $structureHandler;
     }
