@@ -9,13 +9,13 @@ use Exception;
 class IoC implements IoCInterface
 {
     /** @var string Регистрация зависимости в контейнере */
-    public const IOC_REGISTER = 'IoC.Register';
+    public const string IOC_REGISTER = 'IoC.Register';
 
     /** @var string Создание скоупа */
-    public const SCOPES_NEW = 'Scopes.New';
+    public const string SCOPES_NEW = 'Scopes.New';
 
     /** @var string Переключение на скоуп */
-    public const SCOPES_CURRENT = 'Scopes.Current';
+    public const string SCOPES_CURRENT = 'Scopes.Current';
 
     private ?Scopes $scopes = null;
 
