@@ -12,7 +12,7 @@ services:
     depends_on:
       - php-fpm
     networks:
-      - myProject
+      - architectureOtus
 
   php-fpm:
     build:
@@ -29,8 +29,8 @@ services:
     environment:
       PHP_IDE_CONFIG: serverName=${COMPOSE_PROJECT_NAME}
     networks:
-      - myProject
+      - architectureOtus
 
 networks:
-  myProject:
+  architectureOtus:
     driver: bridge
