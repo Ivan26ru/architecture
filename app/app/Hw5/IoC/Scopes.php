@@ -11,6 +11,10 @@ class Scopes implements ScopesInterface
     /** @var Scope[] */
     private array $scopes = [];
 
+    /**
+     * Название скоупа по умолчанию
+     * @var string
+     */
     private string $currentScopeName = 'default';
 
     public function createScope(string $scopeName): void

@@ -9,34 +9,40 @@ use Exception;
 class IoC implements IoCInterface
 {
     /** @var string Регистрация зависимости в контейнере */
-    public const string IOC_REGISTER = 'IoC.Register';
+    public const IOC_REGISTER = 'IoC.Register';
 
     /** @var string Создание скоупа */
-    public const string SCOPES_NEW = 'Scopes.New';
+    public const SCOPES_NEW = 'Scopes.New';
 
     /** @var string Переключение на скоуп */
-    public const string SCOPES_CURRENT = 'Scopes.Current';
+    public const SCOPES_CURRENT = 'Scopes.Current';
 
     private ?Scopes $scopes = null;
 
     /**
      * Универсальный метод для регистрации/получения зависимости и создание/переключения на scopes.
      *
-     * @param string $key
+     * @param  string  $key
      * @param        ...$args
+     *
      * @return mixed
      * @throws Exception
      */
     public function resolve(string $key, ...$args): mixed
     {
-        if (self::IOC_REGISTER === $key) {
-            $this->getScopes()->getCurrentScope()->addDependency($args[0], $args[1]);
-        } elseif (self::SCOPES_NEW === $key) {
-            $this->getScopes()->createScope($args[0]);
-        } elseif (self::SCOPES_CURRENT === $key) {
-            $this->getScopes()->setCurrentScope($args[0]);
-        } else {
-            return $this->getScopes()->getCurrentScope()->resolve($key, ...$args);
+        switch ($key) {
+            case self::IOC_REGISTER:
+                $this->getScopes()->getCurrentScope()->addDependency($args[0], $args[1]);
+                break;
+            case self::SCOPES_NEW:
+                $this->getScopes()->createScope($args[0]);
+                break;
+            case self::SCOPES_CURRENT:
+                $this->getScopes()->setCurrentScope($args[0]);
+                break;
+            default:
+                // Получить у текущего скоупа указанную в $key зависимость
+                return $this->getScopes()->getCurrentScope()->resolve($key, ...$args);
         }
 
         return true;
