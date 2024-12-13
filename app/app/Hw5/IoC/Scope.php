@@ -28,7 +28,7 @@ class Scope implements ScopeInterface
     public function resolve(string $key, ...$args): mixed
     {
         if (isset($this->dependencies[$key])) {
-            return $this->dependencies[$key]($args);
+            return $this->dependencies[$key](...$args);
         }
 
         throw new Exception("Зависимость $key не зарегистрирована.");
